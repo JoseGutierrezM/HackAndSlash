@@ -25,6 +25,13 @@ public class GameManager : MonoBehaviour
         }
         target = GetComponentInChildren<Player>(true);
         spawner = GetComponentInChildren<Spawner>(true);
+    }
+
+    private void Start()
+    {
+        target.gameObject.SetActive(true);
+        Camera.main.GetComponent<CameraController>().AssignTarget(target.gameObject);
+        spawner.AssignTarget(target);
         spawner.gameObject.SetActive(true);
         StartGame();
     }

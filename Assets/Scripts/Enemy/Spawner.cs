@@ -5,7 +5,7 @@ using UnityEngine;
 public class Spawner : MonoBehaviour
 {
     List<Enemy> enemiesList;
-    [SerializeField] Character target;
+    Character target;
 
     [SerializeField] float spawnRate = 10;
     [SerializeField] float spawnTimer = 10;
@@ -29,6 +29,11 @@ public class Spawner : MonoBehaviour
         }
         GameManager.onGameStart += Activate;
         GameManager.onGameOver += Deactivate;
+    }
+
+    public void AssignTarget(Character _target)
+    {
+        target = _target;
     }
 
     void Activate()

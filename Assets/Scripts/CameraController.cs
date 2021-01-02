@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class CameraController : MonoBehaviour
 {
-    [SerializeField] GameObject target;
+    GameObject target;
     Vector3 offset;
 
     void Awake()
@@ -16,13 +16,17 @@ public class CameraController : MonoBehaviour
     {
         if (target != null) 
         {
-            FollowPlayer(target);
+            FollowTarget();
         } 
     }
 
-    public void FollowPlayer(GameObject target)
+    public void AssignTarget(GameObject _target)
+    {
+        target = _target;
+    }
+
+    public void FollowTarget()
     {
         transform.position = new Vector3(target.transform.position.x, 15, target.transform.position.z) + offset;
     }
-
 }
